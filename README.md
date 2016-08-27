@@ -1,9 +1,6 @@
-# Parrot, The _Par_ameter-based _Rout_er for Meteor
-===============================================
+<img src='https://raw.githubusercontent.com/msavin/Parrot/master/PARROT.png'>
 
-Parrot is a router designed for Meteor. It gives you reactivity in all the right places while costing your visitors less than four kilobytes of bandwidth.
-
-For maximum pleasure, combine with `Template.dynamic`. For maximum information, see GUIDE.md.
+Parrot is a router designed for Meteor. It gives you reactivity in all the right places while costing your visitors less than four kilobytes of bandwidth. For maximum pleasure, combine with `Template.dynamic`. For maximum information, see GUIDE.md.
 
 ```javascript
 /*_____________________________________________________________________
