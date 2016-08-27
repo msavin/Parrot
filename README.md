@@ -7,7 +7,7 @@ An easy way to undestand Parrot is to think of it as having Session/Reactive-Dic
 ```javascript
 /*_____________________________________________________________________
 |                      |                  |                            |
-|  http://meteor.toys  /  #documentation  /  section=Mongol/type=free  |
+|  http://meteor.toys  /  #documentation  /  section=Mongol/type=pro  |
 |  Origin              |  Section         |  Key/Value Parameters      |
 |______________________|__________________|___________________________*/
 
@@ -15,7 +15,7 @@ Router.register({
     'documentation': function (parameters) {
         console.log('Ran `documentation` route');
         console.log('Person is viewing: ' +  parameters.section); 
-        console.log('Which is: ' +  parameters.type);
+        console.log('The version is: ' +  parameters.type);
     },
     'buyMeteorToys': function () {
         Session.set("lol", "just a subtle hint");
