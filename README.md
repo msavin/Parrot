@@ -27,7 +27,7 @@ Router.go('documentation/section=Mongol/type=pro');
 //            The version is: pro
 ```
 
-The code above will route the application from the default `http://localhost:3000/#home` to `http://localhost:3000/#settings/account/updatePassword` and run the appropriate callback. 
+The code above will route the application from the default `http://localhost:3000/#home` to `http://localhost:3000/#documentation/section=Mongol/type=pro` and run the appropriate callback. 
 
 # Reactive Key/Value Parameters
 
