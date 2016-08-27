@@ -2,6 +2,8 @@
 
 Parrot is a router designed for Meteor. It gives you reactivity in all the right places while costing your visitors less than four kilobytes of bandwidth. For maximum pleasure, combine with `Template.dynamic`. For maximum information, see GUIDE.md.
 
+An easy way to undestand Parrot is to think of it as having Session/Reactive-Dict on the URL instead of in the application.
+
 ```javascript
 /*_____________________________________________________________________
 |                      |                  |                            |
@@ -53,9 +55,7 @@ With this approach, it's really easy to control small parts of your application 
 
 # Ready for Production
 
-Parrot is light and stable - if it fits your needs then you should have no problems using it. 
-
-Parrot is intended to be used for applications only. If you are building a content/SEO-driven website, you may prefer something like Flow-Router.
+Parrot is light and stable - if it fits your needs then you should have no problems using it. Parrot is intended to be used for applications only. If you are building a content/SEO-driven website, you may prefer something like Flow-Router.
 
 To get started, just run:
 
