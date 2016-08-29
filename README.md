@@ -2,7 +2,7 @@
 
 Parrot is a router designed for Meteor. It gives you reactivity in all the right places while costing your visitors less than four kilobytes of bandwidth. For maximum pleasure, combine with `Template.dynamic`. For maximum information, see GUIDE.md.
 
-An easy way to undestand Parrot is to think of it as having Session/Reactive-Dict on the URL instead of in the application.
+An easy way to undestand Parrot is to think of it in two ways. First, as if every URL change is basically a function call. Second, it's like having Session/Reactive-Dict on the URL instead of in memory. For more details, see GUIDE.md.
 
 ```javascript
 /*_____________________________________________________________________
@@ -18,7 +18,7 @@ Router.register({
         console.log('The version is: ' +  parameters.type);
     },
     'buyMeteorToys': function () {
-        Session.set("lol", "just a subtle hint");
+        Session.set('lol', 'just a subtle hint');
     }
 });
 
