@@ -63,4 +63,7 @@ To get started, just run:
 
 In the future, Parrot may integrate with Meteor's build system and/or become framework agnostic. For more information, see FUTURE.md.
 
-**Thanks to Moshe Berman for helping with the URL parser!**
+---
+
+**Thanks to Moshe Berman for helping with the URL parser! 
+[(GitHub)](http://github.com/mosheberman) [(Twitter)](http://twitter.com/bermaniastudios)**
