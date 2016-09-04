@@ -51,7 +51,7 @@ Router.init({
     }
 })
 
-Once you have that set, you can use `Router.register()` anywhere you'd like to configure the routes. 
+Once you have that set, you can use `Router.register()` anywhere to configure the callbacks. 
 
 ```
 # Reactive Key/Value Parameters
@@ -76,7 +76,7 @@ Router.get("showMenu");
 
 With this approach, it's really easy to control small parts of your application while embracing the full capabilities of browser navigation. Generally speaking, a URL can contain 2000 characters, so you can keep a lot of data there.
 
-Every time you update the parameters, it counts as a record in the browser history and navigation. Therefore, you might want to update multiple parameters at once, and you can:
+Every time you update the parameters, it counts as a record in the browser history and navigation. Therefore, you might want to update multiple parameters at once:
 
 ```javascript
 Router.set({
@@ -86,7 +86,7 @@ Router.set({
 // URL becomes: http://localhost:3000/#/a=1/b=2
 ```
 
-Finally, you can use Parrot just for the parameters and not for the callbacks. At that point, it becomes like `Session` except the data is stored on the URL instead of just in memory.
+Finally, you can use Parrot just for the parameters and not for the callbacks. At that point, it becomes like `Session` except the key/value pairs are stored on the URL instead of just in memory.
 
 # How To Go Places
 
@@ -109,7 +109,7 @@ Router.go('documentation', {
 });
 ```
 
-Parameter caching can be handy for "remembering" where the user was. For example, if a user opens a section of the documentation, then navigates back into the website, and then back into the documentation, they would be exactly where they left off.
+Parameter caching can be handy for "remembering" where the user was. For example, if a user opens a section of the documentation, then navigates back into the website, and then back into the documentation, you can drop them off exactly where they were before.
 
 # Ready for Production
 
@@ -121,5 +121,4 @@ To get started, just run:
 
 In the future, Parrot may integrate with Meteor's build system and/or become framework agnostic. For more information, see FUTURE.md.
 
-**Thanks to Moshe Berman for helping with the URL parser! 
-[(GitHub)](http://github.com/mosheberman) [(Twitter)](http://twitter.com/bermaniastudios)**
+**Thanks to [Moshe Berman](http://github.com/mosheberman) for helping with the URL parser!**
