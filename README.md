@@ -44,7 +44,7 @@ The code above will route the application from the default of `http://meteor.toy
 
 Getting started with Parrot is as easy as running:
 
-		meteor add msavin:parrot
+meteor add msavin:parrot
 
 and then tuning this chunk of code on your client:
 
