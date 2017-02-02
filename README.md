@@ -151,10 +151,10 @@ Router.delete(['a','b']);
 
 You can use Parrot for the parameters functionality alone by not using the `Router.init` function. At that point, it becomes like `Session` except the key/value pairs are stored on the URL instead of just in memory. With that, you get all the benefits of `Session`, plus support for reloads, link sharing, and back-forward navigation.
 
-# Project State
-
-Parrot is light, stable, and designed to work closely with Meteor. If it fits your needs then you should have no problems using it. 
+# Project State and Intended Use
 
 Parrot is intended to be used for applications only. If you are building a content/SEO-driven website, you may prefer something like [Flow-Router](http://github.com/kadira/flow-router).
+
+Parrot is light, stable, and designed to work closely with Meteor. If it fits your needs then you should have no problems using it. Because Parrot is built on top of `Reactive-Dict`, it can work with any framework that Meteor supports.
 
 **Thanks to [Moshe Berman](http://github.com/mosheberman) for helping with the URL parser!**
