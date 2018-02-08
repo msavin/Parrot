@@ -12,8 +12,8 @@ Router.parser.parse = function (inputURL) {
 	
 	// 4. Generate and return object
 	var result           = {};
-	result['parameters'] = {};
-	result['name']       = name;
+	result["parameters"] = {};
+	result["name"]       = name;
 
 	for (var key in parameters) {
 		result.parameters[key] = parameters[key];
@@ -26,8 +26,11 @@ Router.parser.getQueryFromURL = function (inputURL) {
 	// Remove the base URL and return a query string (fails on localhost)
 	// var regex = RegExp(/((http(s)*(:\/\/)){1})([0-z]+)((\.+)([a-z]{2,3}))+(\/)*/g);
 	// var output = inputURL.replace(regex, "");
-	absoluteUrl = window.location.origin + window.location.pathname;
+	var absoluteUrl = window.location.origin + window.location.pathname;
 	var output = inputURL.replace(absoluteUrl, "");
+
+	// strip out the search field
+	output = output.replace(location.search, "");
 	return output;
 }
 
@@ -41,7 +44,7 @@ Router.parser.getActionFromQuery = function (queryString) {
 
 Router.parser.getComponentsFromQueryString = function (queryString) {
 	// Get the components from a query string
-	var components = queryString.split('/');
+	var components = queryString.split("/");
 	return components;
 }
 
@@ -55,10 +58,14 @@ Router.parser.getParametersFromQuery = function (queryString) {
 	// NOTE: Assume proper encoding. 
 	for (var i = 0; i < pairs.length; i++) {
 		var pair = pairs[i];
-		var partsOfPair = pair.split('=');
+		var partsOfPair = pair.split("=");
 		var key = partsOfPair[0];
 		var value = partsOfPair[1];
 		
+		// decode 
+		key = Router.internal.decode(key);
+		value = Router.internal.decode(value);
+
 		parameters[key] = value;
 	}
 	

@@ -1,23 +1,26 @@
-<img src="https://raw.githubusercontent.com/msavin/Parrot/master/PARROT.png">
+<img align="right" width="200" src="https://github.com/msavin/Parrot/blob/master/PARROT.png?raw=true" />
 
-**Parrot is a hash router for Meteor.** An easy way to understand it to think of it as having `Session` stored on the URL instead of in-memory. Then, picture that every time the URL changes, a function runs with all the parameters passed into it. 
+# Parrot
 
-Parrot works great with Lamma (coming soon), a layout manage for Meteor-Blaze applications, and a friend of Parrot.
+### A New Kind of Router for Meteor 
+
+Parrot is a _Par_ameter _Rout_er made just for Meteor. It brings state management to a whole new level by letting you store all kinds of data on the URL in a fast and convenient way.
+
+An easy way to understand Parrot to think of it as having `Session` stored on the URL instead of in-memory. Another way to look at it is, as if each URL is a function call. The `section` refers to the function name, and the `parameters` are its arguments. The best part is, you can use it however you would like.
+
+Parrot simplifies route management in the same way that template-level subscriptions simplify data management. The two are a great combination, especially because the parameters are a reactive data source.
 
 ```javascript
 /*____________________________________________________________________
 |                      |                  |                           |
 |  http://meteor.toys  /  #documentation  /  section=Mongol/type=pro  |
-|  Origin              |  Section         |  Key/Value Parameters     |
+|  Origin              |  Section         |  Parameters               |
 |______________________|__________________|__________________________*/
 
 Router.register({
     "documentation": function (parameters) {
         console.log("Person is viewing: " +  parameters.section); 
         console.log("The version is: " +  parameters.type);
-    },
-    "buyMeteorToys": function () {
-        // ... 
     }
 });
 
@@ -33,20 +36,23 @@ Router.go("documentation", {
 });
 
 // URL     -> http://meteor.toys/#documentation/section=Mongol/type=pro
-// Output -> 
-//            console: Person is viewing: Mongol
-//            console: The version is: pro
+// Output ->  Person is viewing: Mongol
+//            The version is: pro
 ```
 
 The code above will route the application from the default of `http://meteor.toys/#home` to `http://meteor.toys/#documentation/section=Mongol/type=pro`, and run the appropriate callback.
+
+Parrot works great with (Lamma)[https://www.github.com/msavin/Lamma], a layout manage for Meteor-Blaze applications, and a friend of Parrot.
 
 # Copy and Paste to Start
 
 Getting started with Parrot is as easy as running:
 
+```bash
 meteor add msavin:parrot
+```
 
-and then tuning this chunk of code on your client:
+and then tuning this _optional_ chunk of code on your client:
 
 ```javascript
 Router.init({
@@ -63,7 +69,9 @@ Router.init({
 
 Once you have that set, you can use `Router.register()` to register routes, as show in the example on top. 
 
-If a route is not registered, Parrot will run on the `onError` callback. If a route is defined, Parrot will run it along with the `onChange` callback, which can be used to bake in additional guards, tracking, etc.
+If a route is defined, Parrot will run it along with the `onChange` callback, which can be used to bake in additional guards, tracking, etc. If it is not not registered, Parrot will run on the `onError` callback, if one is present. 
+
+FYI: you can use Parrot just for the `set` and `get` functions, and it should stack fine with other routers in this use case.
 
 # How To Go Places
 
@@ -99,19 +107,9 @@ Router.go('documentation', {
     },
     type: "pro"
 });
-``` 
+```
 
 Parameter caching can be handy for letting your application "remember" where it's user was. For example, if a user navigates to "documentation" in your app, then to "dashboard", and then back to "documentation", you can drop them off exactly where they were, as shown in the example above.
-
-# Sticky Parameters
-
-**Coming Soon.** In addition to setting parameters on the URL and being able to cache their values, you may also want to have parameters that stick around even if they were not declared in the `Router.go()` call. To do so, simply prefix the parameter with an underscore (`_`).
-
-```
-Router.set("_showMenu", "true");
-```
-
-For as long as that value is present on the URL, and the navigation is handled with-in the application, the parameter will "stick" around. Therefore, if the user switches to back-forward browser navigation, it should work smoothly.
 
 # Reactive Key/Value Parameters
 
@@ -119,24 +117,27 @@ Whatever key/value pair you set through on URL will be set as a reactive value i
 
 ```javascript
 // Set key/value pair just like with Session
-Router.set("showMenu", "true");
+Router.set("section", "Mongol");
 // Turns this: http://meteor.toys/#documentation/section=Mongol
-//       into: http://meteor.toys/#documentation/section=Mongol/showMenu=true
-
-// Remove key/value pair
-Router.delete("showMenu");
-// Turns this: http://meteor.toys/#documentation/section=Mongol/showMenu=true
 //       into: http://meteor.toys/#documentation/section=Mongol
 
 // This is a reactive data source powered by ReactiveDict
-Router.get("showMenu");
+Router.get("section");
+// Returns: "Mongol"
+
+// Remove key/value pair
+Router.delete("section");
+// Turns this: http://meteor.toys/#documentation/section=Mongol
+//       into: http://meteor.toys/#documentation
+
+
 ```
 
-With this approach, it's really easy to control small parts of your application while embracing the full capabilities of browser navigation. A URL can usually contain 2000 characters, so you can keep a lot of data there.
+With this approach, it's really easy to control small parts of your application while embracing the full capabilities of browser navigation. A URL can contain like 2000 characters, so you can keep a lot of data there.
 
 # Setting Multiple Parameters at Once
 
-Every time you set or remove a parameter, it counts as an entry in the browsers history, and therefore the back-forward navigaton. Therefore, when you need to step multiple parameters at once, you might prefer to do so in one shot. Here's how you can do that:
+Every time you set or remove a parameter, it counts as an entry in the browsers history, and therefore the back-forward navigaton. Thus, when you need to step multiple parameters at once, you might prefer to do so in one shot. Here's how you can do that:
 
 ```javascript
 Router.set({
@@ -153,8 +154,6 @@ You can use Parrot for the parameters functionality alone by not using the `Rout
 
 # Project State and Intended Use
 
-Parrot is intended to be used for applications only. If you are building a content/SEO-driven website, you may prefer something like [Flow-Router](http://github.com/kadira/flow-router).
-
-Parrot is light, stable, and designed to work closely with Meteor. If it fits your needs then you should have no problems using it. Because Parrot is built on top of `Reactive-Dict`, it can work with any framework that Meteor supports.
+Parrot is light, stable, and designed to work closely with Meteor. Parrot is designed for single-page web applications. If you are building something that required indexing, such as a content website, you might prefer a different router.
 
 **Thanks to [Moshe Berman](http://github.com/mosheberman) for helping with the URL parser!**

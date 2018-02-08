@@ -29,7 +29,7 @@ Router.delete = function () {
 
 Router.parameters.updateHash = function (key, value) {
 	// 1. Grab the current hash
-	current = Router.parser.parse(window.location.href)
+	var current = Router.parser.parse(window.location.href)
 
 	// 2. Place the new value
 	if (typeof key === "object") {
@@ -42,7 +42,7 @@ Router.parameters.updateHash = function (key, value) {
 	}
 
 	// 3. Reconstruct the hash
-	newHash = Router.internal.constructURL(current);
+	var newHash = Router.internal.constructURL(current);
 
 	// 4. Be fruitful and multiply
 	Router.go(newHash);
@@ -51,9 +51,9 @@ Router.parameters.updateHash = function (key, value) {
 Router.parameters.updateFromURL = function (data) {
 	// 1. Diff the current parameters and previous parameters
 	// 2. Update the existing parameters
-	newParameters     = data.parameters;
-	newParameterNames = Object.keys(newParameters);
-	oldParameters     = Object.keys(Router.all());
+	var newParameters     = data.parameters;
+	var newParameterNames = Object.keys(newParameters);
+	var oldParameters     = Object.keys(Router.all());
 
 	// 3. Remove the old parameters 
 	oldParameters.forEach(function (key) {

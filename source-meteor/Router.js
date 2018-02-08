@@ -1,11 +1,10 @@
-Router          = new ReactiveDict('Router');
+Router          = new ReactiveDict("Router");
 Router.current  = new ReactiveVar(null);
 Router.routes   = {};
 Router.config   = {};
 
-
 Router.register = function (routes) {
-	keys = Object.keys(routes)
+	var keys = Object.keys(routes)
 
 	keys.forEach(function (route) {
 		callback = routes[route]
@@ -51,12 +50,12 @@ Router.init = function (config) {
 }
 
 Router.debug = function () {
-	console.log("The defined routes are:")
+	console.log("The defined routes are:");
 	console.log(Router.routes);
-	console.log("The router configuration is:")
+	console.log("The router configuration is:");
 	console.log(Router.config);
-	console.log("The current route is:")
+	console.log("The current route is:");
 	console.log(Router.parser.parse(window.location.href));
-	console.log("The cached parameters are:")
-	// console.log(Router.parser.parse(window.location.href));
+	console.log("The cached parameters are:");
+	console.log(Router.cache.data);
 }

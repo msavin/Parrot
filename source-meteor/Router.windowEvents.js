@@ -5,4 +5,4 @@ window.onhashchange = function (e) {
 	Router.parameters.updateFromURL(newURL);
 };
 
-window.addEventListener('load', Router.internal.init);
+window.addEventListener("load", Router.internal.init);

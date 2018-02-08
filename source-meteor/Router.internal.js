@@ -2,7 +2,7 @@ Router.internal = {};
 Router.internal.latestRoute = null;
 
 Router.internal.run = function (newRoute) {
-	routeName = newRoute.name;
+	var routeName = newRoute.name;
 
 	if (Router.routes[routeName]) {
 		if (Router.internal.latestRoute !== routeName) {
@@ -21,7 +21,6 @@ Router.internal.run = function (newRoute) {
 		Router.current.set(newRoute.name);
 		Router.cache.set(newRoute);
 	};
-
 }
 
 Router.internal.init = function () {
@@ -48,13 +47,28 @@ Router.internal.onError = function () {
 	}
 }
 
+
+Router.internal.encode = function (url) {
+	url = url.trim();
+	return encodeURIComponent(url)
+}
+
+Router.internal.decode = function (url) {
+	url = url.trim();
+	return decodeURIComponent(url)
+}
+
 Router.internal.constructURL = function (target) {
-	newHash = target.name || "";
-	routeKeys = Object.keys(target.parameters);
+	var newHash = target.name || "";
+	newHash = Router.internal.encode(newHash)
+	var routeKeys = Object.keys(target.parameters);
 
 	routeKeys.forEach(function (parameter) {
 		if (target.parameters[parameter]) {
-			newHash = newHash + "/" + parameter + "=" + target.parameters[parameter];
+			var key = Router.internal.encode(parameter);
+			var value = Router.internal.encode(target.parameters[parameter]);
+			console.log(key, value)
+			newHash = newHash + "/" + key + "=" + value;
 		}
 	});
 

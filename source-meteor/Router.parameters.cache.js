@@ -12,8 +12,8 @@ Router.cache.setParam = function (section, key, value) {
 }	
 
 Router.cache.set = function(data) {
-	routeName = data.name;
-	parameters = Object.keys(data.parameters);
+	var routeName = data.name;
+	var parameters = Object.keys(data.parameters);
 
 	parameters.forEach(function (item) {
 		Router.cache.setParam(routeName, item, data.parameters[item]);
