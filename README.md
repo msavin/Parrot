@@ -1,14 +1,15 @@
-<img align="right" width="200" src="https://github.com/msavin/Parrot/blob/master/PARROT.png?raw=true" />
+<img align="right" width="200" src="https://github.com/msavin/Parrot/raw/master/PARROT.png" />
 
 # Parrot
 
-### A New Kind of Router for Meteor 
+### A New Kind of Router for SPAs
 
-Parrot is a _Par_ameter _Rout_er made just for Meteor. It brings state management to a whole new level by letting you store all kinds of data on the URL in a fast and convenient way.
+Parrot is a PARameter ROUTer made just for building SPAs using Meteor. It brings state management to a whole new level by letting you store all kinds of data on the URL in a fast and convenient way.
+
+Parrot simplifies route management in the same way that template-level subscriptions simplify data management. The two are a great combination, especially because the parameters are a reactive data source.
 
 An easy way to understand Parrot to think of it as having `Session` stored on the URL instead of in-memory. Another way to look at it is, as if each URL is a function call. The `section` refers to the function name, and the `parameters` are its arguments. The best part is, you can use it however you would like.
 
-Parrot simplifies route management in the same way that template-level subscriptions simplify data management. The two are a great combination, especially because the parameters are a reactive data source.
 
 ```javascript
 /*____________________________________________________________________
@@ -42,7 +43,7 @@ Router.go("documentation", {
 
 The code above will route the application from the default of `http://meteor.toys/#home` to `http://meteor.toys/#documentation/section=Mongol/type=pro`, and run the appropriate callback.
 
-Parrot works great with (Lamma)[https://www.github.com/msavin/Lamma], a layout manage for Meteor-Blaze applications, and a friend of Parrot.
+Parrot works great with [Lamma](https://www.github.com/msavin/Lamma), a layout manage for Meteor-Blaze applications, and a friend of Parrot.
 
 # Copy and Paste to Start
 
@@ -129,8 +130,6 @@ Router.get("section");
 Router.delete("section");
 // Turns this: http://meteor.toys/#documentation/section=Mongol
 //       into: http://meteor.toys/#documentation
-
-
 ```
 
 With this approach, it's really easy to control small parts of your application while embracing the full capabilities of browser navigation. A URL can contain like 2000 characters, so you can keep a lot of data there.
@@ -154,6 +153,6 @@ You can use Parrot for the parameters functionality alone by not using the `Rout
 
 # Project State and Intended Use
 
-Parrot is light, stable, and designed to work closely with Meteor. Parrot is designed for single-page web applications. If you are building something that required indexing, such as a content website, you might prefer a different router.
+Parrot is light, stable, and designed to work closely with Meteor. Parrot is designed for single-page web applications. If you are building something that requires indexing, such as a content website, you might prefer something else
 
 **Thanks to [Moshe Berman](http://github.com/mosheberman) for helping with the URL parser!**
