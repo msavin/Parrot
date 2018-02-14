@@ -1,7 +1,7 @@
 Package.describe({
 	name:    	   "msavin:parrot",
 	summary: 	   "Parameter Driven Router for Meteor",
-	version: 	   "1.1.0",
+	version: 	   "1.2.0",
 	git:           "https://github.com/msavin/Parrot.git",
 	documentation: "README.md",
 });

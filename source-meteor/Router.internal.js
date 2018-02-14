@@ -49,13 +49,17 @@ Router.internal.onError = function () {
 
 
 Router.internal.encode = function (url) {
-	url = url.trim();
-	return encodeURIComponent(url)
+	if (url) {
+		url = url.trim();
+		return encodeURIComponent(url)
+	}
 }
 
 Router.internal.decode = function (url) {
-	url = url.trim();
-	return decodeURIComponent(url)
+	if (url) {
+		url = url.trim();
+		return decodeURIComponent(url)
+	}
 }
 
 Router.internal.constructURL = function (target) {
@@ -104,4 +108,16 @@ Router.internal.go.fromObject = function (name, parameters) {
 	});
 
 	Router.internal.go.fromString(route);
+}
+
+Router.internal.getURL = function () {
+	var url = window.location.href
+	var lastCharacter = url.substr(url.length - 1);
+
+	if (lastCharacter === "/") {
+		url = url.substring(0, url.length - 1)
+	}
+
+	return url;
+
 }

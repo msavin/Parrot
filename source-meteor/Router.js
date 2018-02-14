@@ -55,7 +55,7 @@ Router.debug = function () {
 	console.log("The router configuration is:");
 	console.log(Router.config);
 	console.log("The current route is:");
-	console.log(Router.parser.parse(window.location.href));
+	console.log(Router.parser.parse(Router.internal.getURL()));
 	console.log("The cached parameters are:");
 	console.log(Router.cache.data);
 }

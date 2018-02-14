@@ -8,6 +8,8 @@ Router.set = function (key, value) {
 }
 
 Router.delete = function () {
+	var args;
+	
 	// Convert arguments into array
 	if (typeof arguments[0] === "object") {
 		args = arguments[0]
@@ -23,13 +25,13 @@ Router.delete = function () {
 
 		Router.parameters.updateHash(keys, null);
 	} else {
-		Router.parameters.updateHash(key, null);		
+		Router.parameters.updateHash(args[0], null);		
 	}
 }
 
 Router.parameters.updateHash = function (key, value) {
 	// 1. Grab the current hash
-	var current = Router.parser.parse(window.location.href)
+	var current = Router.parser.parse(Router.internal.getURL())
 
 	// 2. Place the new value
 	if (typeof key === "object") {
