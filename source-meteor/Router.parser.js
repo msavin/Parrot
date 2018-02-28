@@ -7,13 +7,16 @@ Router.parser.parse = function (inputURL) {
 	// 2. Grab the rest and split on slashes. 
 	var name     = Router.parser.getActionFromQuery(query);
 	
-	// 3. The first part is the "command" ('#order')
+	// 3. The first part is the "command" ("#order")
 	var parameters = Router.parser.getParametersFromQuery(query);
 	
 	// 4. Generate and return object
 	var result           = {};
 	result["parameters"] = {};
 	result["name"]       = name;
+	result["hash"]		 = Router.parser.getQueryFromURL(inputURL);
+	result["url"]		 = inputURL;
+
 
 	for (var key in parameters) {
 		result.parameters[key] = parameters[key];

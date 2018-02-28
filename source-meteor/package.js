@@ -1,7 +1,7 @@
 Package.describe({
 	name:    	   "msavin:parrot",
-	summary: 	   "Parameter Driven Router for Meteor",
-	version: 	   "1.2.0",
+	summary: 	   "A new kind of router for single page applications",
+	version: 	   "1.3.0",
 	git:           "https://github.com/msavin/Parrot.git",
 	documentation: "README.md",
 });
@@ -19,6 +19,6 @@ Package.onUse(function(api) {
 	api.addFiles(clientFiles, "client");
 	api.use("reactive-dict");
 	api.use("reactive-var");
-	api.versionsFrom("1.0");
+	api.versionsFrom("1.3");
 	api.export("Router", "client")
 });

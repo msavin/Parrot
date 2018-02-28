@@ -47,8 +47,11 @@ Router.internal.onError = function () {
 	}
 }
 
-
 Router.internal.encode = function (url) {
+	if (typeof url !== "string") {
+		url = JSON.stringify(url);
+	}
+
 	if (url) {
 		url = url.trim();
 		return encodeURIComponent(url)
@@ -58,7 +61,15 @@ Router.internal.encode = function (url) {
 Router.internal.decode = function (url) {
 	if (url) {
 		url = url.trim();
-		return decodeURIComponent(url)
+		url = decodeURIComponent(url);
+
+		try {
+			url = JSON.parse(url);
+		} catch (e) {
+			// ...
+		}
+
+		return url;
 	}
 }
 
@@ -71,7 +82,6 @@ Router.internal.constructURL = function (target) {
 		if (target.parameters[parameter]) {
 			var key = Router.internal.encode(parameter);
 			var value = Router.internal.encode(target.parameters[parameter]);
-			console.log(key, value)
 			newHash = newHash + "/" + key + "=" + value;
 		}
 	});
